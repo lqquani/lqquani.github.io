@@ -7,7 +7,7 @@
     <title>李剑韬的个人主页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     
-    <script src="./js/jquery-2.1.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="./js/jquery.waterfall.js"></script>
     <script src="./js/stickUp.js"></script>
     <script src="./js/jquery.superslides.js"></script>
@@ -26,7 +26,10 @@
    
 </head>
 <body> 
+<div class="adcenter">
+</div>
 
+<header id="header">
       <!--黑色导航条样式为navbar-inverse，白色样式为default  ， .navbar-fixed-top导航条固定在顶端--> 
        <nav class="navbar navbar-inverse navbar-fixed-top"> 
            <div class="container-fluid"> 
@@ -88,7 +91,7 @@
                </div>
                </div>
        </nav> 
-
+</header><!--/header-->
    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
        <!-- ol指示器  ol标签与ul标签不同 ol为是有序列表 ul为是无序列表 -->
        <ol class="carousel-indicators">
@@ -149,16 +152,18 @@
 
 
 
-
-<!-- <footer>
-        <p>版权李剑韬所有</p>
-        <hr />
-        <small>法律条文</small>
-        <small>联系我们</small>
-        <small>客户意见</small>
-        <small>商户合作</small>
-</footer> -->
-
+<footer id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">Copyright &copy; 2018.李剑韬 All rights reserved.</div>
+			<div class="col-sm-6">
+				<ul class="social-icons">
+					<li><a href="https://github.com/lqquani"><i class="icon icon-github icon-2x"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer><!--/#footer-->
 
 </body>
 

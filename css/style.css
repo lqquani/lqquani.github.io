@@ -979,3 +979,42 @@ h5 {
 a:hover {
     text-decoration: none;
 }
+
+/***********************
+********* Footer ******
+************************/
+#footer {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: #fff;
+  background: #222222;
+  font-size: 13px;
+}
+#footer a {
+  color: #fff;
+}
+#footer a:hover {
+  color: #FFA98E;
+}
+#footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 -7.5px;
+}
+#footer ul > li {
+ display: inline-block; 
+
+ border: 1px solid rgba(255, 255, 255, 0.09);
+padding: 3px 0;
+width: 31px;
+text-align: center;
+}
+@media only screen and (min-width: 768px) {
+  #footer .social-icons {
+    float: right;
+  }
+}
+.form-control {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
