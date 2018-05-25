@@ -97,7 +97,7 @@ html, body {
     var gameOver=false;
     var score=0;
     var Difficulty;
-    var gameState=0;//ä¸€å…±å››ä¸ªå€¼ï¼Œ0,1,2,3,4,5åˆ†åˆ«å¯¹åº”å¼€å§‹å¼€å§‹èœå•ç•Œé¢ï¼Œæ­£åœ¨æ¸¸æˆä¸­ï¼Œæš‚åœï¼Œç»“æŸï¼Œè¶…æ—¶,æŸ¥çœ‹æ’å
+    var gameState=0;//Ò»¹²ËÄ¸öÖµ£¬0,1,2,3,4,5·Ö±ğ¶ÔÓ¦¿ªÊ¼¿ªÊ¼²Ëµ¥½çÃæ£¬ÕıÔÚÓÎÏ·ÖĞ£¬ÔİÍ££¬½áÊø£¬³¬Ê±,²é¿´ÅÅÃû
     var playButton;
     var configButton;
     var RankingButton;
@@ -245,7 +245,7 @@ html, body {
     function run(){
         ctx.fillStyle = "rgba(8,8,12,1)";
         ctx.fillRect( 0 , 0 , canvasW , canvasH );  
-        if(gameState==0){//å¼€å§‹èœå•çŠ¶æ€
+        if(gameState==0){//¿ªÊ¼²Ëµ¥×´Ì¬
             drawBackground(ctx);
             playButton.drawButton(ctx);
             configButton.drawButton(ctx);
@@ -275,33 +275,42 @@ html, body {
             document.onkeydown=function(event){
                 var code = event.keyCode 
                 switch(code) {  
-                    case 38: //å‘ä¸Š   
+                    case 38: //ÏòÉÏ   
                         buttonIndex--;
                         if(buttonIndex<0){
                             buttonIndex=buttonArray.length-1;
                         }
                         break;   
-                    case 40: //å‘ä¸‹   
+                    case 40: //ÏòÏÂ   
                         buttonIndex++;
                         if(buttonIndex>buttonArray.length-1){
                             buttonIndex=0;
                         }
                         break;  
 
-                    case 13: //å›è½¦
+                    case 13: //»Ø³µ
                         if(buttonIndex==0){
-                            gameState=1;  //è¿›å…¥æ¸¸æˆ
+                            gameState=1;  //½øÈëÓÎÏ·
                             clearInterval(perform);  
                             speed=99;
                             perform=setInterval( run , speed );
                         }
                         if(buttonIndex==2){
-                            //gameState=5;  //æŸ¥çœ‹æ’å
+                            //gameState=5;  //²é¿´ÅÅÃû
                         }
                         break;
                 }
 
             }
+            document.ontouchmove=function(event){
+            	if (event.targetTouches.length == 1) {
+            	¡¡¡¡¡¡¡¡ event.preventDefault();// ×èÖ¹ä¯ÀÀÆ÷Ä¬ÈÏÊÂ¼ş£¬ÖØÒª 
+            	        var touch = event.targetTouches[0];
+            	        // °ÑÔªËØ·ÅÔÚÊÖÖ¸ËùÔÚµÄÎ»ÖÃ
+            	        alert(1);
+            	}
+            }
+            
             if(rankingButton.x<651){
                 //buttonArray[buttonIndex].color="yellow";
                 //buttonArray[buttonIndex].shake(ctx);
@@ -317,7 +326,7 @@ html, body {
             document.onkeydown = function(event) {      
                 var code = event.keyCode;
                 switch(code){   
-                    case 32: //æš‚åœ
+                    case 32: //ÔİÍ£
                         gameState=1;
                         perform=setInterval( run , speed );
                         break;
@@ -344,9 +353,9 @@ html, body {
                 remainTime--;
                 if(remainTime<0){
                     remainTime=0;
-                    $.messager.prompt('My Title', 'è¯·è¾“å…¥ä½ çš„å§“å', function(r){
+                    $.messager.prompt('My Title', 'ÇëÊäÈëÄãµÄĞÕÃû', function(r){
                         if (r){
-                            $.messager.alert('My Title',r+",æ‚¨çš„å¾—åˆ†ä¿¡æ¯å·²ç»ä¸Šä¼ åˆ°æ’å","");
+                            $.messager.alert('My Title',r+",ÄúµÄµÃ·ÖĞÅÏ¢ÒÑ¾­ÉÏ´«µ½ÅÅÃû","");
                         }
                     });
                     //addNewRanking(str,score);
@@ -359,27 +368,27 @@ html, body {
                 var code = event.keyCode   
                 var isException = false;   
                 switch(code){   
-                    case 37: //å‘å·¦   
+                    case 37: //Ïò×ó   
                         if(snake.direction!="right"){   
                             snake.direction ="left";
                         } else isException = true;   
                         break;   
-                    case 38: //å‘ä¸Š   
+                    case 38: //ÏòÉÏ   
                         if(snake.direction!="down"){   
                             snake.direction ="up";   
                         } else isException = true;   
                         break;   
-                    case 39: //å‘å³   
+                    case 39: //ÏòÓÒ   
                         if(snake.direction!="left"){   
                             snake.direction = "right";
                         } else isException = true;   
                         break;   
-                    case 40: //å‘ä¸‹   
+                    case 40: //ÏòÏÂ   
                         if(snake.direction!="up"){   
                             snake.direction = "down";   
                         } else isException = true;   
                         break; 
-                    case 32: //æš‚åœ
+                    case 32: //ÔİÍ£
                         gameState=2; 
                         break;
                 }  
@@ -436,29 +445,29 @@ html, body {
             var code = event.keyCode   
             var isException = false;   
             switch(code) {   
-                case 37: //å‘å·¦   
+                case 37: //Ïò×ó   
                     if(self.direction!="right"){   
                         self.direction ="left";
                     } else isException = true;   
                     break;   
-                case 38: //å‘ä¸Š   
+                case 38: //ÏòÉÏ   
                     if(self.direction!="down"){   
                         self.direction ="up";   
                     } else isException = true;   
                     break;   
-                case 39: //å‘å³   
+                case 39: //ÏòÓÒ   
                     if(self.direction!="left"){   
                         self.direction = "right";
                     } else isException = true;   
                     break;   
-                case 40: //å‘ä¸‹   
+                case 40: //ÏòÏÂ   
                     if(self.direction!="up"){   
                         self.direction = "down";   
                     } else isException = true;   
                     break;   
             }   
             if(isException){   
-                    alert("æ–¹å‘å¼‚å¸¸ï¼Œä¸èƒ½æ²¿åæ–¹å‘åé€€!");   
+                    alert("·½ÏòÒì³££¬²»ÄÜÑØ·´·½ÏòºóÍË!");   
             }   
         }
     }
@@ -470,7 +479,7 @@ html, body {
                 this.nodes[i]=new AsphyreNode(self.x-i*20,self.y,self.nodeSize,self.nodeSize);
             }
         },  
-        drawNodes:function(context){   //ç»˜åˆ¶è®¾èº«ä½“   
+        drawNodes:function(context){   //»æÖÆÉèÉíÌå   
             var self = this;   
             context.fillStyle = "blue";   
             context.strokeStyle = "#ffffff";   
@@ -482,7 +491,7 @@ html, body {
         go:function(){
             var self = this;
             if(self.direction=="left"){
-                if(self.nodes[0].equals(new AsphyreNode(_food.x,_food.y,self.nodeSize,self.nodeSize))) {//åƒåˆ°é£Ÿç‰©ï¼Œå°‘èµ°ä¸€æ­¥   
+                if(self.nodes[0].equals(new AsphyreNode(_food.x,_food.y,self.nodeSize,self.nodeSize))) {//³Ôµ½Ê³Îï£¬ÉÙ×ßÒ»²½   
                     self.eatFood();    
                 }  
                 self.judgeOut();
@@ -493,7 +502,7 @@ html, body {
                 self.nodes[0].x-=self.nodeSize; 
             }
             if(self.direction=="right"){
-                if(self.nodes[0].equals(new AsphyreNode(_food.x,_food.y,self.nodeSize,self.nodeSize))) {//åƒåˆ°é£Ÿç‰©ï¼Œå°‘èµ°ä¸€æ­¥   
+                if(self.nodes[0].equals(new AsphyreNode(_food.x,_food.y,self.nodeSize,self.nodeSize))) {//³Ôµ½Ê³Îï£¬ÉÙ×ßÒ»²½   
                     self.eatFood();    
                 } 
                 self.judgeOut();
@@ -504,7 +513,7 @@ html, body {
                 self.nodes[0].x+=self.nodeSize;
             }
             if(self.direction=="up"){
-                if(self.nodes[0].equals(new AsphyreNode(_food.x,_food.y,self.nodeSize,self.nodeSize))) {//åƒåˆ°é£Ÿç‰©ï¼Œå°‘èµ°ä¸€æ­¥   
+                if(self.nodes[0].equals(new AsphyreNode(_food.x,_food.y,self.nodeSize,self.nodeSize))) {//³Ôµ½Ê³Îï£¬ÉÙ×ßÒ»²½   
                     self.eatFood();   
                 } 
                 self.judgeOut();
@@ -515,7 +524,7 @@ html, body {
                 self.nodes[0].y-=self.nodeSize;
             }
             if(self.direction=="down"){
-                if(self.nodes[0].equals(new AsphyreNode(_food.x,_food.y,self.nodeSize,self.nodeSize))) {//åƒåˆ°é£Ÿç‰©ï¼Œå°‘èµ°ä¸€æ­¥ 
+                if(self.nodes[0].equals(new AsphyreNode(_food.x,_food.y,self.nodeSize,self.nodeSize))) {//³Ôµ½Ê³Îï£¬ÉÙ×ßÒ»²½ 
                     self.eatFood();  
                 } 
                 self.judgeOut();

@@ -135,9 +135,10 @@
                     break;
             }
         }
+        
         //根据按键确定执行的操作
         function moveShape(event){
-            if(getDirection(event)=='right')
+            if(event=='right'||getDirection(event)=='right')
             {
                 for(var i=0;i<4;i++){
                     if(t[2*i]+rectX+1>=20 || resultArray[2*i+rectX+1]==1 ){
@@ -146,7 +147,7 @@
                 }
                 rectX+=1;
             }
-            if(getDirection(event)=='left')
+            if(event=='left'||getDirection(event)=='left')
             {
                 for(var i=0;i<4;i++)
                 {
@@ -157,7 +158,7 @@
                 rectX-=1;
 
             }
-            if(getDirection(event)=='up'){
+            if(event=='up'||getDirection(event)=='up'){
                 var mleft=0;
                 for(var i=0;i<4;i++){
                     if(t[i*2]+rectX>mleft){
@@ -179,7 +180,7 @@
 
             }
 
-            if(getDirection(event)=='down'){
+            if(event=='down'||getDirection(event)=='down'){
                 clearInterval(tid);
                 tid=setInterval("DrawTetris();",50);
             }
@@ -384,12 +385,17 @@
         <br>
         <input id="btnStart" type="submit" value="开始" />
         <label id="idState"></label>
-
-        </div>
         <br>
-
+		
         <label>分数：</label>
         <input  id="txtPoint" readonly="true"  value="0" />
+        <br>
+        <div>
+        <input id="btnUp" type="button" onclick="moveShape('up')" value="变换" />
+        <input id="btnDown" type="button" onclick="moveShape('down')" value="快速落下" />
+        <input id="btnLeft" type="button" onclick="moveShape('left')" value="向左移动" />
+        <input id="btnRight" type="button" onclick="moveShape('right')" value="向右移动" />
+        </div>
     </form>
 
 
